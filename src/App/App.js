@@ -37,8 +37,10 @@ export default class App extends React.Component {
       bgImage: 'assets/images/404.png',
       apiLocation: message,
       date: '',
+      time: '',
       location:"",
       temp: suggestion,
+      weatherIcon: '',
       condition: '' 
     })
   }
