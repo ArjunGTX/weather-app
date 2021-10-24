@@ -82,9 +82,10 @@
 }
 .weather {
   z-index: 10;
-  padding: 50px 20px 20px 20px;
+  padding: 30px;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin: 50px;
   color: var(--transparent-white);
@@ -94,8 +95,13 @@
   border-radius: 20px;
   box-shadow: 0px 0px 20px 5px #0000002a;
 }
+.temp-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .temperature,.condition {
-  margin: 10px;
+  margin: 10px 5px;
   z-index: 2;
   font-size: 4rem;
   letter-spacing: 3px;
@@ -106,10 +112,14 @@
   letter-spacing: normal;
   font-family: sans-serif;
 }
+.weather-icon {
+  width: 100px;
+  height: 100px;
+}
 
 @media screen and (max-width:720px) {
   :root {
-    font-size: 12px;
+    font-size: 10px;
   }
   .loc-input {
     font-size: 1.5rem;
@@ -117,9 +127,10 @@
   .weather {
     min-width: 280px;
     min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
+  .weather-icon {
+    width: 85px;
+    height: 85px;
+    margin-right: -10px;
   }
 }

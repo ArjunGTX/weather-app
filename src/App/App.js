@@ -11,7 +11,9 @@ export default class App extends React.Component {
       apiLocation: '',
       date: "",
       temp: "",
-      condition: ""
+      condition: "",
+      weatherIcon: '',
+      time: ''
     }
   }
 
@@ -19,13 +21,14 @@ export default class App extends React.Component {
     this.setState({location: e.target.value})
   }
 
-  setWeatherState = (locInfo,currentDate,temperature,condition) => {
+  setWeatherState = (locInfo,currentDate,temperature,condition,weatherIcon,time) => {
     this.setState({
       apiLocation: locInfo,
       date: currentDate.toDateString(),
       temp: `${temperature}°C`,
-      condition: condition
-
+      condition: condition,
+      weatherIcon: weatherIcon,
+      time: time
     })
   } 
 
@@ -64,9 +67,13 @@ export default class App extends React.Component {
       this.setBgImage(fetchLocation);
       let locInfo = `${fetchLocation}, ${weatherData.location.country}`;
       let currentDate = new Date(weatherData.current.last_updated);
+      let d = new Date();
+      let time = `${d.getUTCHours()}: ${d.getUTCMinutes()} UTC`;
       let temperature = Math.round(weatherData.current.temp_c);
       let condition = weatherData.current.condition.text;
-      this.setWeatherState(locInfo,currentDate,temperature,condition);
+      let weatherIcon = weatherData.current.condition.icon;
+      this.setWeatherState(locInfo,currentDate,temperature,condition,weatherIcon,time);
+      console.log(weatherIcon);
     })
     .catch(err => {
       console.log(err);
@@ -97,7 +104,9 @@ export default class App extends React.Component {
       apiLocation,
       date,
       temp,
-      condition
+      condition,
+      weatherIcon,
+      time
     } = this.state;
     return (
   
@@ -105,17 +114,21 @@ export default class App extends React.Component {
         <img src={bgImage} className='bg-image' alt='background' />
         <div className='main-container'>
         <div className='search-container'>
-          <input className='loc-input' type= 'text' onChange={this.storeLocation} onKeyPress={this.enterKeyHandler} value={location} />
+          <input className='loc-input' type= 'text' onChange={this.storeLocation} onKeyPress={this.enterKeyHandler} value={location} autoFocus/>
           <button className='search-btn' onClick={this.clickHandler}>
           <img className='search' src='assets/icons/icons8-search.svg' alt='search-icon'/>
           </button>
         </div>
         <div className='location-container'>
           <p className='location'>{apiLocation}</p>
-          <p className='date'>{date}</p>
+          <p className='date'>{`${date} ${time}`}</p>
         </div>
         <div className='weather'>
-          <p className='temperature'>{temp}</p><p className='condition'>{condition}</p>
+          <div className='temp-holder'>
+          <img src={weatherIcon} alt='icon' className='weather-icon' />
+          <p className='temperature'>{temp}</p>
+          </div>
+          <p className='condition'>{condition}</p>
         </div>
         </div>
         </div>
