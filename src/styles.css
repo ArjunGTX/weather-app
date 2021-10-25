@@ -2,13 +2,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Lato, sans-serif;
+  font-family: Lexend, sans-serif;
   font-weight: 700;
 }
 :root {
   --semi-transparent: rgba(255, 255, 255, 0.493);
   --shadow-color: 0px 2px 15px #000000d5;
-  --transparent-white: #ffffff7e;
+  --transparent-white: #ffffff9a;
+  --transparent-bg: #64646441;
+  --almost-white: #ffffffe7;
 }
 #container-overlay {
   overflow-x: hidden;
@@ -34,12 +36,34 @@
   align-items: center;
   text-align: center;
 }
+.logo {
+  margin: 20px;
+  margin-top: 0;
+  display: flex;
+  height: 140px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+}
+.logo-image {
+  width: 80px;
+  margin: 5px;
+  z-index: 10;
+  opacity: 0.9;
+}
+.logo-text {
+  z-index: 10;
+  color: var(--almost-white);
+  font-size: 2.5rem;
+  text-shadow: var(--shadow-color);
+}
 .search-container {
-  z-index: 3;
+  z-index: 20;
   display: flex;
   justify-content: space-between;
   border-bottom: 4px solid var(--semi-transparent);
-  margin:80px 40px 20px 40px;
+  margin:50px 20px;
 }
 .loc-input {
   max-width: 250px;
@@ -94,13 +118,13 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin: 60px 40px;
+  margin: 40px;
   color: var(--transparent-white);
   width: 400px;
   height: 250px;
-  background-color: #4e4e4e69;
+  background-color: var(--transparent-bg);
   border-radius: 20px;
-  box-shadow: 0px 0px 20px 5px #0000004f;
+  box-shadow: 0px 0px 15px 4px #00000044;
 }
 .text {
   text-align: left;
@@ -126,12 +150,41 @@
 }
 #arrow {
   display: none;
+  opacity: 0;
 }
+footer {
+  margin-top: 30px;
+  padding: 10px;
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--almost-white);
+  font-size: 1.2rem;
+  background-color: #00000044;
+  box-shadow: var(--shadow-color);
+}
+footer p {
+  margin: 15px;
+}
+.socialmedia img {
+  margin: 0 10px;
+  transition: transform 0.3s ;
+}
+.socialmedia img:hover {
+  transform: scaleX(0.92);
+}
+footer p a {
+  color: var(--almost-white);
+}
+
 @media screen and (max-width:720px) {
   @keyframes pulse {
     0% {bottom: 20px;}
     20% {bottom: 10px;}
-    30% {bottom: 20px;}
+    30% {bottom: 25px;}
     40% {bottom: 10px;}
     60% {bottom: 20px;}
     80% {bottom: 10px;}
@@ -139,6 +192,12 @@
   }
   :root {
     font-size: 10px;
+  }
+  .logo {
+    height: 120px;
+  }
+  .logo-image {
+    width: 50px;
   }
   .loc-input {
     font-size: 1.5rem;
@@ -160,6 +219,7 @@
   #arrow {
     position: fixed;
     display: block;
+    opacity: 1;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -167,7 +227,8 @@
     animation-name: pulse;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    animation-delay: 1s;
-
+  }
+  footer {
+    font-size: 1.6rem;
   }
 }

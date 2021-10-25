@@ -12,7 +12,7 @@ export default function Card(props) {
         return (
             <div className='card'>
                 <p className='text text-special'><span>{data1}</span></p>
-                <p className='text text-special'>patchy snow possible with rain</p>
+                <p className='text text-special'>{data2}</p>
                 <img src={img} alt='icon' className='weather-icon' />
             </div>
         )
