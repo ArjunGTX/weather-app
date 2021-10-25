@@ -6,12 +6,12 @@
   font-weight: 700;
 }
 :root {
-  --semi-transparent: rgba(255, 255, 255, 0.650);
-  --shadow-color: 0px 2px 15px #000000a4;
-  --transparent-white: #ffffff96;
+  --semi-transparent: rgba(255, 255, 255, 0.493);
+  --shadow-color: 0px 2px 15px #000000d5;
+  --transparent-white: #ffffff7e;
 }
-.container-overlay {
-  overflow: hidden;
+#container-overlay {
+  overflow-x: hidden;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -22,7 +22,7 @@
   object-position: center;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -80,57 +80,94 @@
   font-weight: 500;
   text-shadow:  var(--shadow-color);
 }
-.weather {
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  position: relative;
   z-index: 10;
-  padding: 30px;
+  padding: 20px 20px 20px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  margin: 50px;
+  margin: 60px 40px;
   color: var(--transparent-white);
-  min-width: 400px;
-  min-height: 200px;
-  background-color: #ffffff23;
+  width: 400px;
+  height: 250px;
+  background-color: #4e4e4e69;
   border-radius: 20px;
-  box-shadow: 0px 0px 20px 5px #0000002a;
+  box-shadow: 0px 0px 20px 5px #0000004f;
 }
-.temp-holder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.text {
+  text-align: left;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  margin: 10px 0;
 }
-.temperature,.condition {
-  margin: 10px 5px;
-  z-index: 2;
-  font-size: 4rem;
+.text-special {
+  font-size: 2.5rem;
   letter-spacing: 3px;
-  text-shadow: 0px 0px 20px #000000a4;
 }
-.condition {
-  font-size: 2.8rem;
-  letter-spacing: normal;
-  font-family: sans-serif;
+.text-special span {
+  font-size: 3rem;
 }
 .weather-icon {
-  width: 100px;
-  height: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin:5px 10px;
+  width: 90px;
+  height: 90px;
+  opacity: 0.75;
 }
-
+#arrow {
+  display: none;
+}
 @media screen and (max-width:720px) {
+  @keyframes pulse {
+    0% {bottom: 20px;}
+    20% {bottom: 10px;}
+    30% {bottom: 20px;}
+    40% {bottom: 10px;}
+    60% {bottom: 20px;}
+    80% {bottom: 10px;}
+    100% {bottom: 20px;}
+  }
   :root {
     font-size: 10px;
   }
   .loc-input {
     font-size: 1.5rem;
   }
-  .weather {
-    min-width: 280px;
-    min-height: 150px;
+  .card-container {
+    flex-direction: column;
+  }
+  .card {
+    width: 280px;
+    height: 200px;
+  }
+  .text {
+    font-size: 1.8rem;
   }
   .weather-icon {
-    width: 85px;
-    height: 85px;
-    margin-right: -10px;
+    width: 80px;
+    height: 80px;
+  }
+  #arrow {
+    position: fixed;
+    display: block;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom .7s;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+
   }
 }
