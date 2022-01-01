@@ -12,6 +12,16 @@ A Weather app made using React.js
 - Detailed Weather Information
 - Error handling 
 
+## Learning Outcomes
+
+- JSX
+- Class Components
+- State
+- Props
+- Life Cycle Methods
+- Conditional Rendering
+- List Rendering
+- Reuse Components
   
 ## How To Use
 
